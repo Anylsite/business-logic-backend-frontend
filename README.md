@@ -14,6 +14,11 @@ The project is divided into 2 parts, viz:
 
 > Backend is a nodejs application that uses a framework called `micro`
 
+## DEMO Links
+
+- Backend: [https://anyledger-backend-api.now.sh/](https://anyledger-backend-api.now.sh/)
+- Frontend: _yet to come_ 😊
+
 #### Steps to generate sample data for the backend
 
 ```bash
