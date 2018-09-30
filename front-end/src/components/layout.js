@@ -1,14 +1,9 @@
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import React from 'react';
+import AppHeader from './AppHeader';
 
-import AppName from './appName';
-
-export default Component => props => ([
-  <AppBar key="appBarHeader" position="static">
-    <Toolbar>
-      <AppName />
-    </Toolbar>
-  </AppBar>,
+const Layout = Component => props => ([
+  <AppHeader key="appBarHeader" />,
   <Component key="PageBodyContent" {...props} />,
 ]);
+
+export default Layout;
