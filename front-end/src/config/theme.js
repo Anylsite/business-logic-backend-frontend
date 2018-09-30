@@ -1,13 +1,9 @@
 import { createMuiTheme } from '@material-ui/core/styles';
+import Config from './config';
 
 export default createMuiTheme({
   palette: {
-    primary: {
-      light: '#1abc9c',
-      main: '#16a085',
-      dark: '#27ae60',
-      contrastText: '#fff',
-    },
+    primary: Config.app.colors,
   },
   overrides: {
     MuiButton: {
