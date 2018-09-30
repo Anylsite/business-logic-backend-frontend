@@ -1,5 +1,15 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Open Sans', Roboto, sans-serif !important;
+  height: 100%;
 }
+
+html {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
