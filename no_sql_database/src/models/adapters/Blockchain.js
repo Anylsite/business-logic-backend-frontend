@@ -6,7 +6,7 @@
 
 class BlockchainAdapter {
   /**
-   * Initiate the Class with reading the file system data saved to JSON files
+   * Initiate the Class with reading the blocks on Blockchain
    */
   constructor() {
     this.getDataFromBlockchain();
