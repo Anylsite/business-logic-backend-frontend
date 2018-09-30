@@ -18,6 +18,52 @@ cd <project-directory>
 npm install
 ```
 
+## How to add data adapters?
+
+Data Adapters are located in `src/models/adapters`
+
+Any adapter need to have 3 functions for the purpose of this demo, viz: `getAllSensors`, `getSensorRecordsForSensor` and `getCountOfRecords`
+
+- **getAllSensors**: Gets the list of sensors available
+- **getSensorRecordsForSensor**: Get the data available for the given sensor id. This function should take one parameter, viz: `sensorId`
+- **getCountOfRecords**: Get the count of records available for the given sensor id. This function should take one parameter, viz: `sensorId`
+
+> Have a look at the FileSystem Data Adapter for a sample implementation of the Adapter.
+
+All methods of the adapter should return a promise which should resovle to the actual data.
+
+Sample implementation of the FileSystem Adapter:
+
+```javascript
+  /**
+   * Gets all the sensors from the sensors database
+   * @returns {Promise<any>}
+   */
+  getAllSensors() {
+    return new Promise(resolve => resolve(this.sensors));
+  }
+
+  /**
+   * Gets the records for each sensor
+   * @param {Number|String} sensorId ID of the Sensor
+   * @returns {Promise<any>}
+   */
+  getSensorRecordsForSensor(sensorId) {
+    return new Promise(resolve => resolve(
+      this.sensor_data.filter(s => s.sensor_id.toString() === sensorId.toString()),
+    ));
+  }
+
+  /**
+   * Gets the count of records for each sensor
+   * @param {Number|String} sensorId ID of the sensor
+   * @returns {Promise<any>}
+   */
+  getCountOfRecords(sensorId) {
+    return new Promise(resolve => resolve(this.getSensorRecordsForSensor(sensorId).length));
+  }
+```
+
 ## Unit Tests
 ```bash
 yarn test
