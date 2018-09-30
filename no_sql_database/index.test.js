@@ -21,9 +21,7 @@ test('Check if the service is up and responds to ping requests', async (t) => {
 
 /**
  * Tests if the /sensors endpoint returns correct output
- *
- * This is checked if the first element in the array contains
- * the id of the sensor.
+ * This is checked if the status is success
  */
 test('Returns the list of sensors', async (t) => {
   const microInstance = micro(service);
@@ -31,6 +29,20 @@ test('Returns the list of sensors', async (t) => {
   const body = await request(`${url}/sensors`);
   const parsedBody = JSON.parse(body);
 
-  if (parsedBody.status === 'success' && parsedBody.data[0].id) t.pass();
+  if (parsedBody.status === 'success') t.pass();
+  else t.fail();
+});
+
+/**
+ * Tests if the /sensors/1 endpoint returns correct output
+ * This is checked if the status is success
+ */
+test('Returns the Sensor Data for Sensor ID 1', async (t) => {
+  const microInstance = micro(service);
+  const url = await listen(microInstance);
+  const body = await request(`${url}/sensors/1`);
+  const parsedBody = JSON.parse(body);
+
+  if (parsedBody.status === 'success') t.pass();
   else t.fail();
 });
