@@ -3,6 +3,7 @@ const {
   ping,
   notFound,
   sensors,
+  sensorData,
 } = require('./src');
 
 module.exports = router(
@@ -10,6 +11,8 @@ module.exports = router(
   get('/ping', ping),
   // Return the list of sensors from the service
   get('/sensors', sensors),
+  // Return the sensor data for a given sensor
+  get('/sensors/:sensorId', sensorData),
   // All the other requests are moved to notFound log
   get('/*', notFound),
 );
