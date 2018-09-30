@@ -92,6 +92,17 @@ Sample implementation of the FileSystem Adapter:
   }
 ```
 
+A model can extend the data adapter to make use of it. For example, the Sensors model extends to FileSystem adapter to make use of data stored locally in the FileSystem.
+
+```javascript
+/**
+ * Sensors model extending the FileSystemModel.
+ * It can extend to BlockChain or any other adapter.
+ */
+class Sensors extends FileModel {
+}
+```
+
 ## Unit Tests
 ```bash
 yarn test
