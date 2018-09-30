@@ -31,7 +31,9 @@ class FileSystemAdapter {
    * @returns {Promise<any>}
    */
   getSensorRecordsForSensor(sensorId) {
-    return new Promise(resolve => resolve(this.sensor_data.filter(s => s.sensor_id === sensorId)));
+    return new Promise(resolve => resolve(
+      this.sensor_data.filter(s => s.sensor_id.toString() === sensorId.toString()),
+    ));
   }
 
   /**
