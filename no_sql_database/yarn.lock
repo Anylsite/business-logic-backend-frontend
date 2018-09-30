@@ -2575,6 +2575,13 @@ merge-source-map@^1.1.0:
   dependencies:
     source-map "^0.6.1"
 
+micro-cors@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/micro-cors/-/micro-cors-0.1.0.tgz#5a5ab6181e050bcc0be1ab208d1c690d2a05f5ba"
+  dependencies:
+    request "^2.81.0"
+    request-promise "^4.2.0"
+
 micro-dev@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/micro-dev/-/micro-dev-3.0.0.tgz#cea7ef2b4318765b74004e98ec92ac7e12fcff37"
@@ -3457,7 +3464,7 @@ request-promise-core@1.1.1:
   dependencies:
     lodash "^4.13.1"
 
-request-promise@^4.2.2:
+request-promise@^4.2.0, request-promise@^4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/request-promise/-/request-promise-4.2.2.tgz#d1ea46d654a6ee4f8ee6a4fea1018c22911904b4"
   dependencies:
@@ -3466,7 +3473,7 @@ request-promise@^4.2.2:
     stealthy-require "^1.1.0"
     tough-cookie ">=2.3.3"
 
-request@^2.88.0:
+request@^2.81.0, request@^2.88.0:
   version "2.88.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.0.tgz#9c2fca4f7d35b592efe57c7f0a55e81052124fef"
   dependencies:
