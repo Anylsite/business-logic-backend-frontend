@@ -1,3 +1,4 @@
+const microCors = require('micro-cors');
 const { router, get } = require('microrouter');
 const {
   ping,
@@ -6,7 +7,9 @@ const {
   sensorData,
 } = require('./src');
 
-module.exports = router(
+const cors = microCors({ allowMethods: ['GET'] });
+
+module.exports = cors(router(
   // Ping response to check the server's health. Typically used internally
   get('/ping', ping),
   // Return the list of sensors from the service
@@ -15,4 +18,4 @@ module.exports = router(
   get('/sensors/:sensorId', sensorData),
   // All the other requests are moved to notFound log
   get('/*', notFound),
-);
+));
