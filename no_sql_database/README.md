@@ -176,6 +176,7 @@ A demo has been deployed to `https://anyledger-backend-api.now.sh`. Here are a f
 - [https://anyledger-backend-api.now.sh/sensors](https://anyledger-backend-api.now.sh/sensors)
 - [https://anyledger-backend-api.now.sh/sensors/1](https://anyledger-backend-api.now.sh/sensors/1)
 
+> P.S. the demo is deployed on now where the deployments freeze due to inactivity. If you do not receive a response on ping endpoint, wait for a few seconds and try again.
 ____________________________________________
 
 #### Structure of sample data
