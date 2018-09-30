@@ -1,0 +1,7 @@
+{
+  "globalDependencies": {
+    "react-router": "registry:dt/react-router#4.0.0+20170323201651",
+    "react-router-dom": "registry:dt/react-router-dom#4.0.0+20170323201651",
+    "recompose": "registry:dt/recompose#0.22.0+20170306203754"
+  }
+}
