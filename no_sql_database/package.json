@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "micro-dev",
-        "start": "NODE_ENV=production micro",
+        "start": "NODE_ENV=production micro -l tcp://0.0.0.0:${PORT-3000}",
         "test": "ava -v",
         "test:coverage": "nyc ava"
     },
