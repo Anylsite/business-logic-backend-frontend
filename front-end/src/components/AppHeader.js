@@ -4,7 +4,7 @@ import React from 'react';
 import AppName from './appName';
 
 const AppHeader = () => (
-  <AppBar position="static">
+  <AppBar position="fixed">
     <Toolbar>
       <AppName />
     </Toolbar>
