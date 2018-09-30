@@ -14,6 +14,11 @@ for (let i = 0; i < numberOfSensors; i++) {
     name: `Sensor ${i + 1}`,
     meta: {
       description: faker.lorem.sentences(2),
+      last_updated: faker.date.past(),
+      company: faker.company.companyName(),
+      hash: faker.finance.bitcoinAddress(),
+      ipaddress: faker.internet.ip(),
+      version: faker.system.semver(),
     },
   });
 }
