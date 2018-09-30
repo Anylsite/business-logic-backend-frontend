@@ -13,3 +13,13 @@ test('Check if the service is up and responds to ping requests', async (t) => {
 
   t.deepEqual(body, 'pong');
 });
+
+test('Returns the list of sensors', async (t) => {
+  const microInstance = micro(service);
+  const url = await listen(microInstance);
+  const body = await request(`${url}/sensors`);
+  const parsedBody = JSON.parse(body);
+
+  if (parsedBody[0].id) t.pass();
+  else t.fail();
+});
