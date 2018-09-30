@@ -168,6 +168,13 @@ All files                            |    77.36 |       75 |    47.62 |    88.64
 -------------------------------------|----------|----------|----------|----------|-------------------|
 ```
 
+## DEMO
+
+A demo has been deployed to `https://anyledger-backend-api.now.sh`. Here are a few endpoints:
+
+- [https://anyledger-backend-api.now.sh/ping](https://anyledger-backend-api.now.sh/ping)
+- [https://anyledger-backend-api.now.sh/sensors](https://anyledger-backend-api.now.sh/sensors)
+- [https://anyledger-backend-api.now.sh/sensors/1](https://anyledger-backend-api.now.sh/sensors/1)
 
 ____________________________________________
 
