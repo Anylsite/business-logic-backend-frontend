@@ -3,6 +3,7 @@ body {
   padding: 0;
   font-family: 'Open Sans', Roboto, sans-serif !important;
   height: 100%;
+  background-color: #F7F7F7;
 }
 
 html {
@@ -13,3 +14,41 @@ html {
   height: 100%;
 }
 
+.content-container {
+  margin: 90px 0px 20px 0px;
+}
+
+.p-10 {
+  padding: 10px;
+}
+
+.p-20 {
+  padding: 20px;
+}
+
+.p-v-10 {
+  padding: 10px 0px;
+}
+
+.p-v-20 {
+  padding: 20px 0px;
+}
+
+.m-b-10 {
+  margin: 0px 0px 10px;
+}
+
+.m-b-20 {
+  margin: 0px 0px 20px;
+}
+
+.m-v-20 {
+  margin: 20px 0px;
+}
+
+.center-align {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
