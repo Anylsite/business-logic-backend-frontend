@@ -5,8 +5,9 @@
     "main": "index.js",
     "scripts": {
         "dev": "micro-dev",
-        "start": "micro",
-        "test": "ava -v"
+        "start": "NODE_ENV=production micro",
+        "test": "ava -v",
+        "test:coverage": "nyc ava"
     },
     "keywords": [],
     "author": "",
@@ -19,6 +20,7 @@
     "devDependencies": {
         "ava": "^0.25.0",
         "micro-dev": "^3.0.0",
+        "nyc": "^13.0.1",
         "request": "^2.88.0",
         "request-promise": "^4.2.2",
         "test-listen": "^1.1.0"
