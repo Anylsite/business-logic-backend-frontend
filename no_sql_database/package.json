@@ -1,26 +1,26 @@
 {
-  "name": "no_sql_database",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "micro-dev",
-    "start": "micro",
-    "test": "ava -wv"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "micro": "^9.3.3",
-    "microrouter": "^3.1.3",
-    "mongoose": "^5.3.0"
-  },
-  "devDependencies": {
-    "ava": "^0.25.0",
-    "micro-dev": "^3.0.0",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.2",
-    "test-listen": "^1.1.0"
-  }
+    "name": "no_sql_database",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "micro-dev",
+        "start": "micro",
+        "test": "ava -wv"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "micro": "^9.3.3",
+        "microrouter": "^3.1.3",
+        "mongoose": "^5.3.0"
+    },
+    "devDependencies": {
+        "ava": "^0.25.0",
+        "micro-dev": "^3.0.0",
+        "request": "^2.88.0",
+        "request-promise": "^4.2.2",
+        "test-listen": "^1.1.0"
+    }
 }
