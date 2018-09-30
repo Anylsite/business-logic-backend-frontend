@@ -9,6 +9,9 @@
  */
 const FileModel = require('./adapters/FileSystem');
 
+/**
+ * Sensors model extending the FileSystemModel
+ */
 class Sensors extends FileModel {
 }
 
