@@ -1,9 +1,20 @@
 # business-logic-backend-frontend
 Backend-Frontend for specific use cases, demo, PoCs.
 
-# Backend (no_sql_database)
+The project is divided into 2 parts, viz:
 
-Steps to generate sample data
+- #### Front End
+- #### Backend
+
+## Frontend
+
+> Front end is a React Web application bootstrapped with `create-react-app`
+
+## Backend (no_sql_database)
+
+> Backend is a nodejs application that uses a framework called `micro`
+
+#### Steps to generate sample data for the backend
 
 ```bash
 cd <project-directory>
