@@ -18,6 +18,34 @@ cd <project-directory>
 npm install
 ```
 
+## Running the project
+
+> Running it locally
+```bash
+yarn dev
+```
+
+or 
+
+```bash
+npm run dev
+```
+
+This will start the dev server on Port `3000` which will automatically listen to changes
+
+> Running it in Production
+```bash
+yarn start
+```
+
+or 
+
+```bash
+npm start
+```
+
+This will start the project in the `PORT` specified in the environment variable. If the `PORT` environment variable is missing, it will start at `:3000` port.
+
 ## How to add data adapters?
 
 Data Adapters are located in `src/models/adapters`
