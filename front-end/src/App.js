@@ -5,13 +5,14 @@ import { Provider } from 'react-redux';
 import { Route } from 'react-router';
 
 import { history, store, theme } from './config';
-import { Home } from './pages';
+import { Home, Details } from './pages';
 
 export default () => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <MuiThemeProvider theme={theme}>
         <Route exact path="/" component={Home.Page} />
+        <Route exact path="/details/:sensorId" component={Details.Page} />
       </MuiThemeProvider>
     </ConnectedRouter>
   </Provider>
