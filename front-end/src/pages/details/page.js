@@ -13,8 +13,12 @@ import { fetchSensorData, fetchSingleSensor } from '../home/actions';
 import InfoGrid from './components/InfoGrid';
 import LeftHeader from './components/LeftHeader';
 import RightHeader from './components/RightHeader';
+import DataTable from './components/DataTable';
+import Graphs from './components/Graphs';
 
-const DetailsPage = ({ processing, sensor, sensorData }) => (
+const DetailsPage = ({
+  processing, sensor, sensorData, sensorId,
+}) => (
   <Grid container>
     {processing && !sensor && (
       <Grid item className="m-v-20 center-align">
@@ -30,6 +34,8 @@ const DetailsPage = ({ processing, sensor, sensorData }) => (
         <RightHeader sensor={sensor} />
       </Grid>,
       <InfoGrid key="detailsInfo" sensorData={sensorData} />,
+      <Graphs key="detailsGraphs" sensorId={sensorId} />,
+      <DataTable key="detailsDataTable" sensorId={sensorId} />,
     ])}
   </Grid>
 );
@@ -40,10 +46,14 @@ DetailsPage.propTypes = {
   processing: PropTypes.bool.isRequired,
   sensor: PropTypes.any.isRequired,
   sensorData: PropTypes.any.isRequired,
+  sensorId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 export default compose(
-  withProps(() => ({ showBackButton: true })),
+  withProps(props => ({
+    showBackButton: true,
+    sensorId: props.match.params.sensorId,
+  })),
   Layout,
   connect(
     (state, ownProps) => ({
