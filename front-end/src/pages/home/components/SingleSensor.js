@@ -6,11 +6,15 @@ import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { compose, lifecycle } from 'recompose';
 
+import { fetchSensorData } from '../actions';
 import Content from './Content';
 import Title from './Title';
 
-const SingleSensor = ({ sensor }) => (
+const SingleSensor = ({ sensor, sensorData }) => (
   <Card>
     <CardActionArea style={{ width: '100%' }} href={`/details/${sensor.id}`}>
       <CardContent>
@@ -28,12 +32,16 @@ const SingleSensor = ({ sensor }) => (
             </Typography>
           </Grid>
           <Grid item sm={2}>
-            <Typography variant="display1">
-              312
-            </Typography>
-            <Typography>
-              Events
-            </Typography>
+            {sensorData && !sensorData.processing && (
+              <div>
+                <Typography align="center" color="primary" variant="display1">
+                  {sensorData.data.count.toString()}
+                </Typography>
+                <Typography align="center" component="p" color="textSecondary">
+                  Events
+                </Typography>
+              </div>
+            )}
           </Grid>
         </Grid>
       </CardContent>
@@ -56,6 +64,34 @@ SingleSensor.propTypes = {
       version: PropTypes.string,
     }),
   }).isRequired,
+  sensorData: PropTypes.shape({
+    processing: PropTypes.bool,
+    data: PropTypes.shape({
+      status: PropTypes.string,
+      count: PropTypes.number,
+      data: PropTypes.any,
+    }),
+  }),
 };
 
-export default SingleSensor;
+SingleSensor.defaultProps = {
+  sensorData: {
+    processing: true,
+  },
+};
+
+export default compose(
+  connect(
+    (state, ownProps) => ({
+      sensorData: state.Home.sensorData[ownProps.sensor.id],
+    }),
+    dispatch => bindActionCreators({ fetchSensorData }, dispatch),
+  ),
+  lifecycle({
+    componentDidMount() {
+      if (!this.props.sensorData || this.props.sensorData.processing === false) {
+        this.props.fetchSensorData(this.props.sensor.id);
+      }
+    },
+  }),
+)(SingleSensor);
