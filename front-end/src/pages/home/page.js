@@ -50,10 +50,10 @@ const Page = ({ processing, sensors }) => (
                 (a, b) => new Date(b.meta.last_updated) - new Date(a.meta.last_updated),
               ).map(s => (
                 <li key={s.meta.hash} className="p-b-10">
-                  <Typography variant="caption" component="span">
+                  <Typography component="span">
                     {moment(new Date(s.meta.last_updated)).format('dddd, Do MMMM YYYY')}
                   </Typography>
-                  <Typography component="span">
+                  <Typography variant="caption" component="span">
                     {s.name}
                     {' at '}
                     {s.meta.company}
