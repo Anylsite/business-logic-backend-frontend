@@ -1,4 +1,5 @@
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
 import PropTypes from 'prop-types';
@@ -17,7 +18,7 @@ const Page = ({ processing, sensors }) => (
       <Typography align="left" variant="headline" component="h1">
         Sensors Dashboard
       </Typography>
-      <Typography gutterBottom variant="subheading" component="p">
+      <Typography gutterBottom variant="caption" component="p">
         Representing data till&nbsp;
         {moment().format('Do MMMM YYYY hh:mm A')}
       </Typography>
@@ -30,11 +31,44 @@ const Page = ({ processing, sensors }) => (
         </Typography>
       </div>
     )}
-    {sensors.length > 0 && sensors.map(s => (
-      <div key={s.meta.hash} className="p-v-10">
-        <SingleSensor sensor={s} />
-      </div>
-    ))}
+    <Grid container sm={12} spacing={16}>
+      <Grid item md={8} sm={12}>
+        {sensors.length > 0 && sensors.map(s => (
+          <div key={s.meta.hash} className="p-b-10">
+            <SingleSensor sensor={s} />
+          </div>
+        ))}
+      </Grid>
+      <Grid item md={4} sm={12}>
+        {sensors.length > 0 && (
+          <div>
+            <Typography variant="subheading">
+                Sensor Firmware Update Events
+            </Typography>
+            <ul className="p-20">
+              {sensors.length > 0 && sensors.sort(
+                (a, b) => new Date(b.meta.last_updated) - new Date(a.meta.last_updated),
+              ).map(s => (
+                <li key={s.meta.hash} className="p-b-10">
+                  <Typography variant="caption" component="span">
+                    {moment(new Date(s.meta.last_updated)).format('dddd, Do MMMM YYYY')}
+                  </Typography>
+                  <Typography component="span">
+                    {s.name}
+                    {' at '}
+                    {s.meta.company}
+                    {' '}
+                    updated to version
+                    {' v'}
+                    {s.meta.version}
+                  </Typography>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </Grid>
+    </Grid>
   </div>
 );
 
