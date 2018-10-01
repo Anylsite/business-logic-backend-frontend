@@ -173,9 +173,9 @@ All files                            |    77.36 |       75 |    47.62 |    88.64
 A demo has been deployed to `https://anyledger-backend-api.now.sh`. Here are a few endpoints:
 
 - [https://anyledger-backend-api.now.sh/ping](https://anyledger-backend-api.now.sh/ping)
-- [https://anyledger-backend-api.now.sh/sensors](https://anyledger-backend-api.now.sh/sensors)
-- [https://anyledger-backend-api.now.sh/sensors/1](https://anyledger-backend-api.now.sh/sensors/1)
-- [https://anyledger-backend-api.now.sh/sensors/1/data](https://anyledger-backend-api.now.sh/sensors/1/data)
+- [https://anyledger-backend-api.now.sh/sensors.json](https://anyledger-backend-api.now.sh/sensors.json)
+- [https://anyledger-backend-api.now.sh/sensors/1/data.json](https://anyledger-backend-api.now.sh/sensors/1/data.json)
+- [https://anyledger-backend-api.now.sh/sensors/1/sensor.json](https://anyledger-backend-api.now.sh/sensors/1/sensor.json)
 
 > P.S. the demo is deployed on now where the deployments freeze due to inactivity. If you do not receive a response on ping endpoint, wait for a few seconds and try again.
 ____________________________________________

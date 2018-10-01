@@ -20,13 +20,13 @@ test('Check if the service is up and responds to ping requests', async (t) => {
 });
 
 /**
- * Tests if the /sensors endpoint returns correct output
+ * Tests if the /sensors.json endpoint returns correct output
  * This is checked if the status is success
  */
 test('Returns the list of sensors', async (t) => {
   const microInstance = micro(service);
   const url = await listen(microInstance);
-  const body = await request(`${url}/sensors`);
+  const body = await request(`${url}/sensors.json`);
   const parsedBody = JSON.parse(body);
 
   if (parsedBody.status === 'success') t.pass();
@@ -34,13 +34,27 @@ test('Returns the list of sensors', async (t) => {
 });
 
 /**
- * Tests if the /sensors/1 endpoint returns correct output
+ * Tests if the /sensors/1/data.json endpoint returns correct output
  * This is checked if the status is success
  */
 test('Returns the Sensor Data for Sensor ID 1', async (t) => {
   const microInstance = micro(service);
   const url = await listen(microInstance);
-  const body = await request(`${url}/sensors/1`);
+  const body = await request(`${url}/sensors/1/data.json`);
+  const parsedBody = JSON.parse(body);
+
+  if (parsedBody.status === 'success') t.pass();
+  else t.fail();
+});
+
+/**
+ * Tests if the /sensors/1/sensor.json endpoint returns correct output
+ * This is checked if the status is success
+ */
+test('Returns the Sensor Information for Sensor ID 1', async (t) => {
+  const microInstance = micro(service);
+  const url = await listen(microInstance);
+  const body = await request(`${url}/sensors/1/sensor.json`);
   const parsedBody = JSON.parse(body);
 
   if (parsedBody.status === 'success') t.pass();

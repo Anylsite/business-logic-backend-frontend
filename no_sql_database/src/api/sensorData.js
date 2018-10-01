@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
   const { sensorId } = req.params;
 
   // Query the model to get data
-  const data = await Sensors.getSensorRecordsForSensor(sensorId);
+  const data = await Sensors.getSensorRecordsForSensor(sensorId.toString());
 
   if (!data || !data.length > 0) {
     // If no data for the given sensor id
