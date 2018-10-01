@@ -16,7 +16,7 @@ const LeftHeader = ({ sensor }) => (
       {sensor.meta.description}
     </Typography>
     <Typography gutterBottom variant="caption" color="secondary" component="p">
-      Sensor was last updated
+      Sensor was updated
       {' '}
       {moment(new Date(sensor.meta.last_updated)).fromNow()}
     </Typography>
