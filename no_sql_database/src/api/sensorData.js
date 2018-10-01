@@ -1,5 +1,5 @@
-const { send } = require('micro');
-const { Sensors } = require('../models');
+    const { send } = require('micro');
+    const { Sensors } = require('../models');
 
 /**
  * Responds to the sensors endpoint with the list of sensors available
