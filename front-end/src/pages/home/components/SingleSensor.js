@@ -3,12 +3,11 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { compose, lifecycle } from 'recompose';
+import { bindActionCreators } from 'redux';
 
 import { fetchSensorData } from '../actions';
 import Content from './Content';
@@ -25,11 +24,6 @@ const SingleSensor = ({ sensor, sensorData }) => (
               {sensor.meta.company}
             </Typography>
             <Content content={sensor.meta.description} />
-            <Typography color="textSecondary" component="small">
-              Version updated to
-              {` v${sensor.meta.version}, `}
-              {moment(new Date(sensor.meta.last_updated)).fromNow()}
-            </Typography>
           </Grid>
           <Grid item sm={2}>
             {sensorData && !sensorData.processing && (
