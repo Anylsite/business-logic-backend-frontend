@@ -11,6 +11,7 @@ import { bindActionCreators } from 'redux';
 import { Layout } from '../../components';
 import { fetchSensors } from './actions';
 import SingleSensor from './components/SingleSensor';
+import EventLogs from './components/EventLogs';
 
 const Page = ({ processing, sensors }) => (
   <div>
@@ -31,43 +32,15 @@ const Page = ({ processing, sensors }) => (
         </Typography>
       </div>
     )}
-    <Grid container sm={12} spacing={16}>
-      <Grid item md={8} sm={12}>
+    <Grid container spacing={16}>
+      <Grid item md={8} sm={12} xs={12}>
         {sensors.length > 0 && sensors.map(s => (
           <div key={s.meta.hash} className="p-b-10">
             <SingleSensor sensor={s} />
           </div>
         ))}
       </Grid>
-      <Grid item md={4} sm={12}>
-        {sensors.length > 0 && (
-          <div>
-            <Typography variant="subheading">
-                Sensor Firmware Update Events
-            </Typography>
-            <ul className="p-h-20">
-              {sensors.length > 0 && sensors.sort(
-                (a, b) => new Date(b.meta.last_updated) - new Date(a.meta.last_updated),
-              ).map(s => (
-                <li key={s.meta.hash} className="p-b-10">
-                  <Typography component="span">
-                    {moment(new Date(s.meta.last_updated)).format('dddd, Do MMMM YYYY')}
-                  </Typography>
-                  <Typography variant="caption" component="span">
-                    {s.name}
-                    {' at '}
-                    {s.meta.company}
-                    {' '}
-                    updated to version
-                    {' v'}
-                    {s.meta.version}
-                  </Typography>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </Grid>
+      <EventLogs sensors={sensors} />
     </Grid>
   </div>
 );
