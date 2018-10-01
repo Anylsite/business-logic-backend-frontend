@@ -15,7 +15,7 @@ const SingleSensor = ({ sensor }) => (
     <CardActionArea style={{ width: '100%' }} href={`/details/${sensor.id}`}>
       <CardContent>
         <Grid container direction="row" alignItems="center" justify="space-between">
-          <Grid item sm={10} direction="column" justify="flex-start">
+          <Grid item sm={10}>
             <Title title={sensor.name} />
             <Typography gutterBottom color="textSecondary">
               {sensor.meta.company}
@@ -27,7 +27,7 @@ const SingleSensor = ({ sensor }) => (
               {moment(new Date(sensor.meta.last_updated)).fromNow()}
             </Typography>
           </Grid>
-          <Grid item sm={2} direction="column" justify="center" alignContent="flex-end" alignItems="flex-end">
+          <Grid item sm={2}>
             <Typography variant="display1">
               312
             </Typography>
