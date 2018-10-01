@@ -10,18 +10,22 @@ export const Types = {
 export const fetchSensors = () => (dispatch) => {
   dispatch({ type: Types.FETCH_SENSORS_PROCESSING });
   const apiUrl = `${Config.api.url}/sensors`;
-  // eslint-disable-next-line no-undef
-  fetch(apiUrl)
-    .then(response => response.json())
-    .then((data) => {
-      if (data.status === 'success') {
-        dispatch({ type: Types.FETCH_SENSORS_SUCCESS, payload: data.data });
-      } else {
-        dispatch({ type: Types.FETCH_SENSORS_FAIL });
-      }
-    }).catch((err) => {
-      // eslint-disable-next-line no-console
-      console.error(err.message, err);
-      dispatch({ type: Types.FETCH_SENSORS_FAIL, payload: err });
-    });
+  try {
+    // eslint-disable-next-line no-undef
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then((data) => {
+        if (data.status === 'success') {
+          dispatch({ type: Types.FETCH_SENSORS_SUCCESS, payload: data.data });
+        } else {
+          dispatch({ type: Types.FETCH_SENSORS_FAIL });
+        }
+      }).catch((err) => {
+        // eslint-disable-next-line no-console
+        console.error(err.message, err);
+        dispatch({ type: Types.FETCH_SENSORS_FAIL, payload: err });
+      });
+  } catch (err) {
+    dispatch({ type: Types.FETCH_SENSORS_FAIL, payload: err });
+  }
 };
