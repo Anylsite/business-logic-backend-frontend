@@ -36,6 +36,7 @@ for (let i = 0; i < numberOfRecords; i++) {
       lat: faker.address.latitude(),
       long: faker.address.longitude(),
     },
+    created_at: faker.date.past(),
   });
 }
 
