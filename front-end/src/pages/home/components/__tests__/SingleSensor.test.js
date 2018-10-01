@@ -2,8 +2,8 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import Content from '../Content';
-import Title from '../Title';
 import SingleSensor from '../SingleSensor';
+import Title from '../Title';
 
 describe('<Title />', () => {
   it('Should render SingleSensor Title', () => {
@@ -23,14 +23,25 @@ describe('<Content />', () => {
 
   it('Should render correct content for SingleSensor Content Component', () => {
     const Wrapper = shallow(<Content content="foo" />);
-    expect(Wrapper.scontains('foo')).toBe(true);
+    expect(Wrapper.contains('foo')).toBe(true);
   });
 });
 
+const testSensorProp = {
+  id: 1,
+  name: 'Foo',
+  meta: {
+    description: 'Boo',
+    last_updated: '2017-10-25T08:41:24.860Z',
+    company: 'Willms, Zulauf and Greenholt',
+    hash: '1LXH4L4WTUPSMBOE43QRB6ZJFWAFL',
+    ipaddress: '168.54.129.163',
+    version: '9.2.1',
+  },
+};
 
 describe('<SingleSensor />', () => {
-
-  const Wrapper = shallow(<SingleSensor content="content" title="title" />);
+  const Wrapper = shallow(<SingleSensor sensor={testSensorProp} />);
 
   it('Should contain title in SingleSensor Component', () => {
     expect(Wrapper.find('Title').length).toBe(1);
@@ -39,5 +50,4 @@ describe('<SingleSensor />', () => {
   it('Should contain Content in SingleSensor Component', () => {
     expect(Wrapper.find('Content').length).toBe(1);
   });
-
 });
