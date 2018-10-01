@@ -3,17 +3,22 @@ import { ConnectedRouter } from 'connected-react-router';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Route } from 'react-router';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import { history, store, theme } from './config';
-import { Home, Details } from './pages';
+import {
+  history, persistor, store, theme,
+} from './config';
+import { Details, Home } from './pages';
 
 export default () => (
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <MuiThemeProvider theme={theme}>
-        <Route exact path="/" component={Home.Page} />
-        <Route exact path="/details/:sensorId" component={Details.Page} />
-      </MuiThemeProvider>
-    </ConnectedRouter>
+    <PersistGate loading={null} persistor={persistor}>
+      <ConnectedRouter history={history}>
+        <MuiThemeProvider theme={theme}>
+          <Route exact path="/" component={Home.Page} />
+          <Route exact path="/details/:sensorId" component={Details.Page} />
+        </MuiThemeProvider>
+      </ConnectedRouter>
+    </PersistGate>
   </Provider>
 );
