@@ -3,7 +3,7 @@ import React from 'react';
 import AppHeader from './AppHeader';
 
 const Layout = Component => props => ([
-  <AppHeader key="appBarHeader" />,
+  <AppHeader key="appBarHeader" showBackButton={props.showBackButton} />,
   <Grid container key="PageBodyContent" direction="row">
     <div className="p-20 content-container">
       <Component {...props} />
