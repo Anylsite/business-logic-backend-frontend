@@ -93,3 +93,7 @@ html {
 .font-sm {
   font-size: 70% !important;
 }
+
+.full-width {
+  width: 100%;
+}
