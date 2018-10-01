@@ -1,9 +1,16 @@
 /* eslint-disable no-undef */
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import React from 'react';
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import sinon from 'sinon';
+
 import Content from '../Content';
 import SingleSensor from '../SingleSensor';
 import Title from '../Title';
+
+const mockStore = configureStore([thunk]);
+const dispatch = sinon.spy();
 
 describe('<Title />', () => {
   it('Should render SingleSensor Title', () => {
@@ -41,7 +48,14 @@ const testSensorProp = {
 };
 
 describe('<SingleSensor />', () => {
-  const Wrapper = shallow(<SingleSensor sensor={testSensorProp} />);
+  const Wrapper = mount(
+    <SingleSensor
+      store={mockStore({ Home: { sensorData: {} } })}
+      dispatch={dispatch}
+      sensor={testSensorProp}
+      sensorData={{ processing: true }}
+    />,
+  );
 
   it('Should contain title in SingleSensor Component', () => {
     expect(Wrapper.find('Title').length).toBe(1);
