@@ -5,6 +5,10 @@ export const Types = {
   FETCH_SENSORS_PROCESSING: 'FETCH_SENSORS_PROCESSING',
   FETCH_SENSORS_SUCCESS: 'FETCH_SENSORS_SUCCESS',
   FETCH_SENSORS_FAIL: 'FETCH_SENSORS_FAIL',
+  FETCH_SINGLE_SENSOR: 'FETCH_SINGLE_SENSOR',
+  FETCH_SINGLE_SENSOR_PROCESSING: 'FETCH_SINGLE_SENSOR_PROCESSING',
+  FETCH_SINGLE_SENSOR_SUCCESS: 'FETCH_SINGLE_SENSOR_SUCCESS',
+  FETCH_SINGLE_SENSOR_FAIL: 'FETCH_SINGLE_SENSOR_FAIL',
   FETCH_SENSORS_DATA: 'FETCH_SENSORS_DATA',
   FETCH_SENSORS_DATA_PROCESSING: 'FETCH_SENSORS_DATA_PROCESSING',
   FETCH_SENSORS_DATA_SUCCESS: 'FETCH_SENSORS_DATA_SUCCESS',
@@ -34,6 +38,38 @@ export const fetchSensors = () => (dispatch) => {
   }
 };
 
+export const fetchSingleSensor = sensorId => (dispatch) => {
+  dispatch({ type: Types.FETCH_SINGLE_SENSOR_PROCESSING, payload: sensorId });
+  const apiUrl = `${Config.api.url}/sensors/${sensorId}/sensor.json`;
+  try {
+    // eslint-disable-next-line no-undef
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then((data) => {
+        if (data.status === 'success') {
+          dispatch({
+            type: Types.FETCH_SINGLE_SENSOR_SUCCESS,
+            payload: { sensorId, data: data.data },
+          });
+        } else {
+          dispatch({
+            type: Types.FETCH_SINGLE_SENSOR_FAIL,
+            payload: { sensorId, err: data.message },
+          });
+        }
+      })
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.error(err.mesage, err);
+        dispatch({ type: Types.FETCH_SINGLE_SENSOR_FAIL, payload: { sensorId, err } });
+      });
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error(err.message, err);
+    dispatch({ type: Types.FETCH_SINGLE_SENSOR_FAIL, payload: { sensorId, err } });
+  }
+};
+
 export const fetchSensorData = sensorId => (dispatch) => {
   dispatch({ type: Types.FETCH_SENSORS_DATA_PROCESSING, payload: sensorId });
   const apiUrl = `${Config.api.url}/sensors/${sensorId}/data.json`;
@@ -56,6 +92,11 @@ export const fetchSensorData = sensorId => (dispatch) => {
             payload: { sensorId, err: { message: data.message } },
           });
         }
+      })
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        // console.error(err.message, err);
+        dispatch({ type: Types.FETCH_SENSORS_DATA_FAIL, payload: { sensorId, err } });
       });
   } catch (err) {
     // eslint-disable-next-line no-console
