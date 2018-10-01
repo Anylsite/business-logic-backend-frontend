@@ -45,7 +45,7 @@ const Page = ({ processing, sensors }) => (
             <Typography variant="subheading">
                 Sensor Firmware Update Events
             </Typography>
-            <ul className="p-20">
+            <ul className="p-h-20">
               {sensors.length > 0 && sensors.sort(
                 (a, b) => new Date(b.meta.last_updated) - new Date(a.meta.last_updated),
               ).map(s => (
