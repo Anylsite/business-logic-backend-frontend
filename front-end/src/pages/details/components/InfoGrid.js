@@ -10,7 +10,7 @@ import InfoGridItem from './InfoGridItem';
 const InfoGrid = ({
   count, maxTemperature, minTemperature, latestTemperature,
 }) => (
-  <Grid container spacing={16} className="p-20">
+  <Grid container spacing={16} className="p-v-20">
     <InfoGridItem
       text="Total Events"
       number={count}
@@ -60,7 +60,7 @@ export default compose(
     maxTemperature: maxBy(props.sensorData.data.data, s => s.temperature).temperature,
     minTemperature: minBy(props.sensorData.data.data, s => s.temperature).temperature,
     latestTemperature: props.sensorData.data.data.sort(
-      (b, a) => new Date(b.created_at) - new Date(a.created_at),
+      (a, b) => new Date(b.created_at) - new Date(a.created_at),
     )[0].temperature,
   })),
 )(InfoGrid);
