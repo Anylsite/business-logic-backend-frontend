@@ -6,12 +6,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const InfoGridItem = ({
-  text, number, suffix, titleVariant,
+  text, number, suffix,
 }) => (
   <Grid item lg={3} md={6} sm={12} xs={12}>
     <Card>
       <CardContent>
-        <Typography align="center" gutterBottom variant={titleVariant} color="primary" component="h1">
+        <Typography align="center" gutterBottom variant="headline" color="primary" component="h1">
           {number}
           {suffix}
         </Typography>
@@ -29,12 +29,10 @@ InfoGridItem.propTypes = {
   number: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   text: PropTypes.string.isRequired,
   suffix: PropTypes.string,
-  titleVariant: PropTypes.string,
 };
 
 InfoGridItem.defaultProps = {
   suffix: '',
-  titleVariant: 'headline',
 };
 
 export default InfoGridItem;
