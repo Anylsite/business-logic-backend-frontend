@@ -17,7 +17,7 @@ The project is divided into 2 parts, viz:
 ## DEMO Links
 
 - Backend: [https://anyledger-backend-api.now.sh/](https://anyledger-backend-api.now.sh/)
-- Frontend: _yet to come_ 😊
+- Frontend: [http://dashboard.anyledger.io.s3-website.ap-south-1.amazonaws.com/](http://dashboard.anyledger.io.s3-website.ap-south-1.amazonaws.com/)
 
 #### Steps to generate sample data for the backend
 
